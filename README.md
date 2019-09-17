@@ -10,12 +10,11 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 <!-- badges: end -->
 
 This is a reimplementation of Shiny’s navbarPage and tabset functions
-with more features and flexibility for the developer defining the user
-interface.
+with more features and flexibility.
 
 ## Installation
 
-You can install shinyextensions from [GitHub](https://github.com/) with:
+You can install shinyextensions with:
 
 ``` r
 # install.packages("devtools")
