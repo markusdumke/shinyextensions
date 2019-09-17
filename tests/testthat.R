@@ -1,4 +1,4 @@
 library(testthat)
-library(shinyextensions)
+library(shinynavbar)
 
-test_check("shinyextensions")
+test_check("shinynavbar")
