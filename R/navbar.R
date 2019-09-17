@@ -4,8 +4,12 @@ navbarHeader <- function(..., pull = "left") {
       ...)
 }
 
-navbarBrand <- function(title) {
-  span(class = "navbar-brand", title)
+navbarBrand <- function(id, title = id) {
+  tags$a(class = "navbar-brand",
+         href = paste0("#", id),
+         `data-toggle` = "tab",
+         `data-target` = paste0("#", id),
+         title)
 }
 
 navbarCollapseButton <- function() {
@@ -27,12 +31,14 @@ navbarText <- function(text, pull = "left") {
   tags$li(class = paste0("navbar-text pull-", pull), text)
 }
 
-navbarButton <- function(id, label = id) {
+navbarButton <- function(id, title = id) {
   tags$button(type = "button",
-              id = id,
+              id = paste0("#", id),
               class = "btn btn-default navbar-btn action-button",
-              style = "padding-right: 10px;",
-              label)
+              style = "margin-right: 10px;",
+              `data-toggle` = "tab",
+              `data-target` = paste0("#", id),
+              title)
 }
 
 navbarNav <- function(..., pull = "left") {
@@ -46,12 +52,12 @@ navbarNav <- function(..., pull = "left") {
           tabs)
 }
 
-navTab <- function(title, ..., active = FALSE) {
+navTab <- function(id, title = id, ..., active = FALSE) {
+  class <- NULL
   if (active) {
-    tags$li(tags$a(href = title, title, `data-toggle` = "tab", `data-value` = title), class = "active")
-  } else {
-    tags$li(tags$a(href = title, title, `data-toggle` = "tab", `data-value` = title))
+    class <- "active"
   }
+  tags$li(tags$a(href = id, title, `data-toggle` = "tab", `data-value` = id), class = class)
 }
 
 navbarCollapse <- function(...) {
