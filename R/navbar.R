@@ -28,8 +28,7 @@
 #'  ui <- bootstrapPage(
 #'    tags$head(tags$style(".navbar-brand {padding: 0 0 !important}")),
 #'    navbar(position = "static-top",
-#'           ## use image as brand
-#'           navbarHeader(navbarBrand("Brand", tags$img(src = "logo.png", height = 70))),
+#'           navbarHeader(navbarBrand("Brand")),
 #'           ## these elements appear on the right
 #'           navbarHeader(navbarButton("Logout"),
 #'                        navbarCollapseButton(),
@@ -88,9 +87,11 @@ navbar <- function(...,
   if (position == "fixed-top") {
     style <- "body {padding-top: 70px;}"
   }
-  inverse <- NULL
+
   if (inverse) {
     inverse <- " navbar-inverse"
+  } else {
+    inverse <- NULL
   }
 
   tagList(
