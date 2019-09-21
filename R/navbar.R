@@ -26,7 +26,6 @@
 #'  library(shiny)
 #'
 #'  ui <- bootstrapPage(
-#'    tags$head(tags$style(".navbar-brand {padding: 0 0 !important}")),
 #'    navbar(position = "static-top",
 #'           navbarHeader(navbarBrand("Brand")),
 #'           ## these elements appear on the right
@@ -34,7 +33,8 @@
 #'                        navbarCollapseButton(),
 #'                        pull = "right"),
 #'           ## the classical navbar with a text form
-#'           navbarCollapse(navbarNav(navTab("Tab1"),
+#'           navbarCollapse(navbarNav(id = "navbar",
+#'                                    navTab("Tab1"),
 #'                                    navTab("Tab2"),
 #'                                    navTab("Tab3")),
 #'                          navbarForm(textInputNoLabel("text")))
@@ -165,10 +165,10 @@ navbarButton <- function(id, title = id) {
 #' @rdname navbar
 #' @export
 
-navbarNav <- function(..., pull = c("left", "right")) {
+navbarNav <- function(..., id = NULL, pull = c("left", "right")) {
   pull <- match.arg(pull)
   tags$ul(class = paste0("nav navbar-nav shiny-tab-input pull-", pull),
-          id = "navbar",
+          id = id,
           ...)
 }
 

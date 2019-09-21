@@ -35,7 +35,7 @@ navbarText(title, pull = c("left", "right"))
 
 navbarButton(id, title = id)
 
-navbarNav(..., pull = c("left", "right"))
+navbarNav(..., id = NULL, pull = c("left", "right"))
 
 navTab(id, title = id, ..., active = FALSE)
 
@@ -78,16 +78,15 @@ if (interactive()) {
  library(shiny)
 
  ui <- bootstrapPage(
-   tags$head(tags$style(".navbar-brand {padding: 0 0 !important}")),
    navbar(position = "static-top",
-          ## use image as brand
-          navbarHeader(navbarBrand("Brand", tags$img(src = "logo.png", height = 70))),
+          navbarHeader(navbarBrand("Brand")),
           ## these elements appear on the right
           navbarHeader(navbarButton("Logout"),
                        navbarCollapseButton(),
                        pull = "right"),
           ## the classical navbar with a text form
-          navbarCollapse(navbarNav(navTab("Tab1"),
+          navbarCollapse(navbarNav(id = "navbar",
+                                   navTab("Tab1"),
                                    navTab("Tab2"),
                                    navTab("Tab3")),
                          navbarForm(textInputNoLabel("text")))
